@@ -1,0 +1,61 @@
+# ==============================================================================
+# Archivos y directorios generales a ignorar en cualquier proyecto
+# ==============================================================================
+.DS_Store
+.env
+.idea/
+.vscode/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+*.log
+*.log.*
+*.iml
+*.iws
+*.ipr
+
+
+# ==============================================================================
+# Exclusiones para el Frontend (React)
+# Como está en la raíz, no se necesita prefijo de directorio.
+# ==============================================================================
+# Directorio de módulos de Node.js
+node_modules/
+
+# Directorio de build de React
+build/
+# Si usas Vite o alguna otra herramienta que genere 'dist' en la raíz
+dist/
+
+
+# Otros archivos generados o de caché
+.eslintcache
+.next/ # Si usas Next.js
+.cache/
+coverage/ # Si generas reportes de cobertura de pruebas
+tmp/
+
+# ==============================================================================
+# Exclusiones para el Backend (Spring Boot)
+# Como está en la raíz, no se necesita prefijo de directorio.
+# ==============================================================================
+# Directorio de build de Maven
+target/
+
+# Archivos de logs
+*.log # Si los logs están en la raíz
+logs/ # Si tienes una carpeta de logs en la raíz
+
+
+# Archivos específicos de IDEs para Java
+.classpath
+.project
+.settings/
+bin/
+
+# Otros archivos generados
+*.jar
+*.war
+*.zip

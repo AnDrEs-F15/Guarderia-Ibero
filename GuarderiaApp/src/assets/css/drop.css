@@ -1,0 +1,24 @@
+/* Aplica a todo el componente FilePond */
+.filepond-wrapper {
+    max-width: 300px; /* o el ancho que prefieras */
+    font-size: 0.85rem;
+  }
+  
+  /* Ajusta los archivos mostrados (preview) */
+/*   .filepond--item {
+    width: 200px !important;
+    height: 200px !important;
+    margin: auto;
+  } */
+  
+  .filepond--file {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Ajusta la imagen en miniatura */
+  .filepond--file-poster {
+    max-height: 80px;
+    object-fit: contain;
+  }
+  
