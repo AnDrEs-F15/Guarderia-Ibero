@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography, Box } from '@mui/material';
+import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography, Box, Divider } from '@mui/material';
 
 // project imports
 import AnimateButton from 'ui-component/extended/AnimateButton';
