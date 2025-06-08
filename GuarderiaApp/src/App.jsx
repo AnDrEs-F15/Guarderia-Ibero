@@ -13,6 +13,8 @@ import ThemeCustomization from 'themes';
 // ==============================|| APP ||============================== //
 
 export default function App() {
+  console.log('API URL:', import.meta.env.VITE_API_URI);
+  console.log('Base URL:', import.meta.env.VITE_APP_BASE_NAME);
   return (
     <ThemeCustomization>
       <NavigationScroll>
