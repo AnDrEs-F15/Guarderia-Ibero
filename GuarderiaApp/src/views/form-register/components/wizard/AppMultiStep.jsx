@@ -11,8 +11,8 @@ const AppMultiStep = () => {
     <>
       <Wizard /* footer={<WizardFooter />} */ header={<StepperForm />}>
         <ChildForm />
-        <CourseForm />
         <GuardianForm />
+        <CourseForm />
         <DocumentForm />
       </Wizard>
     </>

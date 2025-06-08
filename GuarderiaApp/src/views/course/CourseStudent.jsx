@@ -13,7 +13,7 @@ const CourseStudent = () => {
   } = useCourseStudent(id);
   return (
     <MainCard title="Lista de estudiantes del curso">
-      <GlobalTable rows={data ? data : []} colums={childColumns} getRowId="id" />
+      <GlobalTable rows={data ? data : []} colums={childColumns} getRowId="documentId" />
     </MainCard>
   );
 };
