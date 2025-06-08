@@ -36,8 +36,9 @@ public class Enrollments {
     @Temporal(TemporalType.DATE)
     private Date enrollDate;
 
-    @Column(name = "STATUS_ENROLLMENT", length = 20, columnDefinition = "VARCHAR2(20) DEFAULT 'Pending'")
+    @Column(name = "STATUS_ENROLLMENT", length = 20, columnDefinition = "VARCHAR(20) DEFAULT 'Pending'")
     private String statusEnrollment;
+
 
     @Transient
     private String childId;
