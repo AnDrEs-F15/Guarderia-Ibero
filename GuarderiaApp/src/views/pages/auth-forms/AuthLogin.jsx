@@ -12,7 +12,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useAuthLogin } from './hooks/useAuthLogin';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 
 // ===============================|| JWT - LOGIN (con React Hook Form) ||=============================== //
 
@@ -21,6 +21,7 @@ export default function AuthLogin() {
   const theme = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const { onSubmit, register, errors } = useAuthLogin();
+  const navigate = useNavigate();
   if (auth?.token) return <Navigate to="/" replace />;
 
   return (
@@ -67,6 +68,12 @@ export default function AuthLogin() {
         <AnimateButton>
           <Button color="secondary" fullWidth size="large" type="submit" variant="contained">
             Iniciar sesión
+          </Button>
+        </AnimateButton>
+        <Divider sx={{ my: 2 }} />
+        <AnimateButton>
+          <Button onClick={() => navigate('/form-register')} color="secondary" fullWidth size="large" variant="contained">
+            Ir al formulario
           </Button>
         </AnimateButton>
       </Box>
