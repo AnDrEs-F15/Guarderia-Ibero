@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnrollmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.guarderia.service</a> &gt; <span class="el_source">EnrollmentService.java</span></div><h1>EnrollmentService.java</h1><pre class="source lang-java linenums">package com.guarderia.service;
+
+import com.guarderia.entity.Child;
+import com.guarderia.entity.Enrollments;
+import com.guarderia.repository.AttendantRepository;
+import com.guarderia.repository.ChildRepository;
+import com.guarderia.repository.CourseRepository;
+import com.guarderia.repository.EnrollmentRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L17">@RequiredArgsConstructor</span>
+public class EnrollmentService {
+    private final EnrollmentRepository enrollmentRepository;
+    private final ChildRepository childRepository;
+    private final AttendantRepository attendantRepository;
+    private final CourseRepository courseRepository;
+
+    public List&lt;Enrollments&gt; findAll() {
+<span class="nc" id="L25">        return enrollmentRepository.findAllByOrderByIdDesc();</span>
+    }
+
+    public Optional&lt;Enrollments&gt; findById(Long enrollmentId) {
+<span class="nc" id="L29">        return enrollmentRepository.findById(enrollmentId);</span>
+    }
+    public Optional&lt;List&lt;Child&gt;&gt; getStudentsAcceptByCourse(Long courseId) {
+<span class="nc" id="L32">        return enrollmentRepository.getStudentsAcceptByCourse(courseId);</span>
+    }
+
+    public Enrollments save(Enrollments enrollments) {
+<span class="nc" id="L36">        enrollments.setChild(childRepository.findById(enrollments.getChildId()).orElse(null));</span>
+<span class="nc" id="L37">        enrollments.setGuardian(attendantRepository.findById(enrollments.getAttendantId()).orElse(null));</span>
+<span class="nc" id="L38">        enrollments.setCourse(courseRepository.findById(enrollments.getCourseId()).orElse(null));</span>
+<span class="nc" id="L39">        enrollments.setEnrollDate(new Date());</span>
+<span class="nc" id="L40">        return enrollmentRepository.save(enrollments);</span>
+    }
+
+    public Enrollments updateStatus(Long id, String status) {
+<span class="nc" id="L44">        Enrollments enrollment = enrollmentRepository.findById(id).orElse(null);</span>
+<span class="nc" id="L45">        System.out.println(status);</span>
+<span class="nc" id="L46">        enrollment.setStatusEnrollment(status);</span>
+<span class="nc" id="L47">        return enrollmentRepository.save(enrollment);</span>
+    }
+
+    public void deleteById(Long enrollmentId) {
+<span class="nc" id="L51">        enrollmentRepository.deleteById(enrollmentId);</span>
+<span class="nc" id="L52">    }</span>
+
+    public boolean existsEnrollmentsById(Long enrollmentId) {
+<span class="nc" id="L55">        return enrollmentRepository.existsById(enrollmentId);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

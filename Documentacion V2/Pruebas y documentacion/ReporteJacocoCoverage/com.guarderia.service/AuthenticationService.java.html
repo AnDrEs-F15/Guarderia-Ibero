@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthenticationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.guarderia.service</a> &gt; <span class="el_source">AuthenticationService.java</span></div><h1>AuthenticationService.java</h1><pre class="source lang-java linenums">package com.guarderia.service;
+
+import com.guarderia.auth.JwtService;
+import com.guarderia.dto.AuthCredentials;
+import com.guarderia.dto.RegisterAuth;
+import com.guarderia.dto.ResponseAuth;
+import com.guarderia.entity.User;
+import com.guarderia.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Service;
+
+@Service
+<span class="fc" id="L15">@RequiredArgsConstructor</span>
+public class AuthenticationService {
+    private final UserRepository userRepository;
+    private final AuthenticationManager authenticationManager;
+
+    public ResponseAuth generateToken(AuthCredentials credentials) {
+<span class="nc" id="L21">        System.out.println(credentials);</span>
+<span class="nc" id="L22">        authenticationManager.authenticate(</span>
+                new UsernamePasswordAuthenticationToken(
+<span class="nc" id="L24">                        credentials.getUsername(),</span>
+<span class="nc" id="L25">                        credentials.getPassword()</span>
+                )
+        );
+<span class="nc" id="L28">        return new ResponseAuth(JwtService.createToken(credentials.getUsername()));</span>
+    }
+
+
+    public User saveUser (RegisterAuth user) {
+<span class="nc" id="L33">        System.out.println(user);</span>
+<span class="nc" id="L34">        User register = new User();</span>
+<span class="nc" id="L35">        register.setDocumentId(user.getDocumentId());</span>
+<span class="nc" id="L36">        register.setPassword(user.getPassword());</span>
+<span class="nc" id="L37">        register.setActive(&quot;Y&quot;);</span>
+<span class="nc" id="L38">        return userRepository.save(register);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

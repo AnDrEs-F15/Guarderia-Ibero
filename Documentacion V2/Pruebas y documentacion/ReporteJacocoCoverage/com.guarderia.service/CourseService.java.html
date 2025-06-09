@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CourseService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.guarderia.service</a> &gt; <span class="el_source">CourseService.java</span></div><h1>CourseService.java</h1><pre class="source lang-java linenums">package com.guarderia.service;
+
+import com.guarderia.entity.Course;
+import com.guarderia.repository.CourseRepository;
+import com.guarderia.repository.ProfessorRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Service;
+
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L17">@RequiredArgsConstructor</span>
+public class CourseService {
+    private final CourseRepository courseRepository;
+    private final ProfessorRepository professorRepository;
+    public Page&lt;Course&gt; findAll( Pageable pageable) {
+<span class="fc" id="L22">        return courseRepository.findAll(pageable);</span>
+    }
+    public List&lt;Course&gt; findAllByActive() {
+<span class="fc" id="L25">        return courseRepository.findAllByActive();</span>
+    }
+    public Optional&lt;Course&gt; findById(Long courseId) {
+<span class="fc" id="L28">        return courseRepository.findById(courseId);</span>
+    }
+
+    public Course save(Course child) {
+<span class="fc" id="L32">        child.setMainTeacher(professorRepository.findById(child.getMainTeacherId()).orElse(null));</span>
+<span class="fc" id="L33">        return courseRepository.save(child);</span>
+    }
+
+    public void deleteById(Long courseId) {
+<span class="fc" id="L37">        courseRepository.deleteById(courseId);</span>
+<span class="fc" id="L38">    }</span>
+
+    public boolean existsCourseById(Long courseId) {
+<span class="fc" id="L41">        return courseRepository.existsById(courseId);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

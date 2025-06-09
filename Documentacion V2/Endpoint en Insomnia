@@ -1,0 +1,476 @@
+type: collection.insomnia.rest/5.0
+name: TO-GUARD
+meta:
+  id: wrk_94fda8c5533d49698ec0c149c6854886
+  created: 1747190507459
+  modified: 1747190507459
+  description: ""
+collection:
+  - name: Professor
+    meta:
+      id: fld_7b4482bd7cb04ff9bd6c8542b34dbd54
+      created: 1747587380257
+      modified: 1747587380257
+      sortKey: -1747587380257
+      description: ""
+    children:
+      - url: http://localhost:8080/api/professor
+        name: Professor
+        meta:
+          id: req_461f2a64fcd44910bf77c41bc020fdbe
+          created: 1747587383642
+          modified: 1747587419748
+          isPrivate: false
+          description: ""
+          sortKey: -1747587383642
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Course
+    meta:
+      id: fld_05a9df27410746c6bd142d8f9a6d48ba
+      created: 1747589608765
+      modified: 1747589608765
+      sortKey: -1747589608765
+      description: ""
+    children:
+      - url: http://localhost:8080/api/course/active
+        name: Course
+        meta:
+          id: req_15ffa43b1aab4656bbb51579d20361b4
+          created: 1747589612698
+          modified: 1747709510054
+          isPrivate: false
+          description: ""
+          sortKey: -1747589612698
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/course
+        name: Course
+        meta:
+          id: req_d0bde8d8026641809f301ae781a93e82
+          created: 1747601765160
+          modified: 1747602059574
+          isPrivate: false
+          description: ""
+          sortKey: -1747588498170
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            	{
+            		"id": 3,
+            		"nameCourse": "Jardín Explorador",
+            		"minAgeMonths": 12,
+            		"maxAgeMonths": 24,
+            		"maxCapacity": 20,
+            		"shift": "Morning",
+            		"location": "Sala A",
+            		"mainTeacherId": "T987654321",
+            		"active": "Y"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Attendant
+    meta:
+      id: fld_4306e17d200e4ae88f16f6a045a802bd
+      created: 1747590112307
+      modified: 1747590112307
+      sortKey: -1747590112307
+      description: ""
+    children:
+      - url: http://localhost:8080/api/attendant
+        name: Attendant
+        meta:
+          id: req_a81a119b1b17416fac45044d2d74abd3
+          created: 1747590114739
+          modified: 1747590129324
+          isPrivate: false
+          description: ""
+          sortKey: -1747590114739
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Enrollment
+    meta:
+      id: fld_2618c3e45e1d45ae812b8bb4237e691f
+      created: 1747591474479
+      modified: 1747591485924
+      sortKey: -1747591474479
+      description: ""
+    children:
+      - url: http://localhost:8080/api/enrollment/10
+        name: Enrollment
+        meta:
+          id: req_18524e321cb04a26bc0f36e1617b2a46
+          created: 1747591477181
+          modified: 1748133367545
+          isPrivate: false
+          description: ""
+          sortKey: -1747591477181
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_0f0c2d2bfa4b4cf9acebc64ea2a9e5b6',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/document
+        name: EnrollmentDocument
+        meta:
+          id: req_8a05ea43181542a8b85a79684ff02d4e
+          created: 1747591999488
+          modified: 1747592016365
+          isPrivate: false
+          description: ""
+          sortKey: -1747591999488
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/enrollment/10/Aprobado
+        name: EnrollmentStatus
+        meta:
+          id: req_71b6b305b8584a6f9c62c9677cadf3eb
+          created: 1748189391049
+          modified: 1748189460789
+          isPrivate: false
+          description: ""
+          sortKey: -1747590795960
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_0f0c2d2bfa4b4cf9acebc64ea2a9e5b6',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/api/enrollment/42/students
+        name: StudentCourse
+        meta:
+          id: req_7d388bf268b64037a7e70666e9b654bf
+          created: 1748192789861
+          modified: 1748193790814
+          isPrivate: false
+          description: ""
+          sortKey: -1747591136570.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_0f0c2d2bfa4b4cf9acebc64ea2a9e5b6',
+            'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Auth
+    meta:
+      id: fld_6601159cc6af44c3aa9e28fb82fe7e5e
+      created: 1747963816296
+      modified: 1747963816296
+      sortKey: -1747963816296
+      description: ""
+    children:
+      - url: http://localhost:8080/authentication
+        name: New Request
+        meta:
+          id: req_e7a75916b9354c3daed9c5851f70c0fb
+          created: 1747963820228
+          modified: 1749348612261
+          isPrivate: false
+          description: ""
+          sortKey: -1747963820229
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "documentId": "2211",
+              "password": "TuPasswordSegura",
+              "fullName": "Juan Pérez"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/authentication/login
+        name: Login
+        meta:
+          id: req_0f0c2d2bfa4b4cf9acebc64ea2a9e5b6
+          created: 1747965643858
+          modified: 1748119941544
+          isPrivate: false
+          description: ""
+          sortKey: -1747777909858.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "username": "test@test.com",
+              "password": "123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: AuthProd
+    meta:
+      id: fld_881e6c37cdd14e34935c1c125da8dcc1
+      created: 1749348571143
+      modified: 1749348571143
+      sortKey: -1747777645387.5
+      description: ""
+    children:
+      - url: "{{ _.PROD }}/authentication"
+        name: New Request
+        meta:
+          id: req_bda0d869cf71480ea58d39cdd671fe1a
+          created: 1749348571146
+          modified: 1749390411953
+          isPrivate: false
+          description: ""
+          sortKey: -1747963820229
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "documentId": "100058298",
+              "password": "1234567",
+              "fullName": "Juan Pérez"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.PROD }}/authentication/login"
+        name: Login
+        meta:
+          id: req_1e5827150c0a47e8a134566b8dc40778
+          created: 1749348571150
+          modified: 1749392608288
+          isPrivate: false
+          description: ""
+          sortKey: -1747777909858.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "username": "100058298",
+              "password": "1234567"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: http://localhost:8080/api/course
+    name: GetCourse
+    meta:
+      id: req_04e6d864abe6488096f8aa01b0d79519
+      created: 1747190517330
+      modified: 1747585228970
+      isPrivate: false
+      description: ""
+      sortKey: -1747190517330
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/child
+    name: Child
+    meta:
+      id: req_248b128abe18434cbdbfa5b19978a3a8
+      created: 1747585214874
+      modified: 1747586683014
+      isPrivate: false
+      description: ""
+      sortKey: -1747585214874
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/child
+    name: Child
+    meta:
+      id: req_a8288bcdb3244c949a187e5bc183ef6b
+      created: 1747586704858
+      modified: 1747586722420
+      isPrivate: false
+      description: ""
+      sortKey: -1747387866102
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"documentId": "CH004",
+        		"firstName": "Andres",
+        		"lastName": "Perez",
+        		"birthDate": "2019-05-12",
+        		"gender": "MASCULINO",
+        		"medicalNotes": "Ninguna",
+        		"allergies": "Maní"
+        	}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_62f861aa2b698c8aa9c11f6f018c95baf6d69591
+    created: 1747190507468
+    modified: 1747583801438
+  cookies:
+    - key: JSESSIONID
+      value: A197F254F86591F77053EF00209E88B9
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-14T02:43:25.675Z
+      lastAccessed: 2025-05-18T15:56:41.437Z
+      id: 50c20936-4622-470e-8270-fc8eb380504b
+environments:
+  name: Base Environment
+  meta:
+    id: env_62f861aa2b698c8aa9c11f6f018c95baf6d69591
+    created: 1747190507464
+    modified: 1749363921766
+    isPrivate: false
+  data:
+    PROD: https://deploy-guarderia-api.onrender.com

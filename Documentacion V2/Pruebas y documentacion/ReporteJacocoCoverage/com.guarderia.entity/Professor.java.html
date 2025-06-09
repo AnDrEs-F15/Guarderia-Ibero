@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Professor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.guarderia.entity</a> &gt; <span class="el_source">Professor.java</span></div><h1>Professor.java</h1><pre class="source lang-java linenums">package com.guarderia.entity;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Entity
+@Table(name = &quot;TEACHERS&quot;)
+<span class="pc bnc" id="L16" title="All 62 branches missed.">@Data @Builder @AllArgsConstructor @NoArgsConstructor</span>
+public class Professor {
+    @Id
+    @Column(name = &quot;DOCUMENT_ID&quot;, length = 20)
+<span class="nc" id="L20">    private String documentId;</span>
+
+    @Column(name = &quot;FIRST_NAME&quot;, length = 50, nullable = false)
+<span class="nc" id="L23">    private String firstName;</span>
+
+    @Column(name = &quot;LAST_NAME&quot;, length = 50, nullable = false)
+<span class="nc" id="L26">    private String lastName;</span>
+
+    @Column(name = &quot;PHONE_NUMBER&quot;, length = 20)
+<span class="nc" id="L29">    private String phoneNumber;</span>
+
+    @Column(name = &quot;EMAIL&quot;, length = 100)
+<span class="nc" id="L32">    private String email;</span>
+
+    @Column(name = &quot;ACTIVE&quot;, length = 1, columnDefinition = &quot;CHAR(1) DEFAULT 'Y'&quot;)
+<span class="nc" id="L35">    private String active;</span>
+
+    @OneToMany(mappedBy = &quot;mainTeacher&quot; , fetch = FetchType.LAZY)
+    @JsonIgnore
+<span class="nc" id="L39">    private List&lt;Course&gt; listCourse;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

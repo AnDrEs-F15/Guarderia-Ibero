@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProfessorController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.guarderia.controller</a> &gt; <span class="el_source">ProfessorController.java</span></div><h1>ProfessorController.java</h1><pre class="source lang-java linenums">package com.guarderia.controller;
+
+import com.guarderia.constants.PathsApp;
+import com.guarderia.entity.Professor;
+import com.guarderia.service.ProfessorService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(PathsApp.URI_PROFESSOR)
+<span class="fc" id="L17">@RequiredArgsConstructor</span>
+public class ProfessorController {
+    private final ProfessorService professorService;
+    @GetMapping
+    public Page&lt;Professor&gt; getAllProfessor(@PageableDefault Pageable pageable) {
+<span class="nc" id="L22">        return professorService.findAll(pageable);</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Professor&gt; getProfessorById(@PathVariable String id) {
+<span class="nc" id="L27">        return professorService.findById(id)</span>
+<span class="nc" id="L28">                .map(ResponseEntity::ok)</span>
+<span class="nc" id="L29">                .orElse(ResponseEntity.notFound().build());</span>
+    }
+
+    @PostMapping
+    public Professor createProfessor(@RequestBody Professor child) {
+<span class="nc" id="L34">        return professorService.save(child);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Professor&gt; updateProfessor(@PathVariable String id, @RequestBody Professor child) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (!professorService.existsProfessorById(id)) return ResponseEntity.notFound().build();</span>
+<span class="nc" id="L40">        return ResponseEntity.ok(professorService.save(child));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; deleteProfessor(@PathVariable String id) {
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (!professorService.existsProfessorById(id)) return ResponseEntity.notFound().build();</span>
+<span class="nc" id="L46">        professorService.deleteById(id);</span>
+<span class="nc" id="L47">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
